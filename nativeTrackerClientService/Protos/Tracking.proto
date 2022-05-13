@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option csharp_namespace = "nativeTrackerClientService";
+
+package Tracking;
+
+import "google/protobuf/timestamp.proto";
+
+// Service for tracking vehicle position.
+service VehicleTrackService {
+  rpc Subscribe(VehicleTrackRequest) returns (stream VehicleTrackUpdate);
+}
+
+// Tracking request containing vehicle handle.
+message VehicleTrackRequest {
+  int32 VehicleHandle = 1;
+}
+
+// Tracking update response containing timestamp and coordinates.
+message VehicleTrackUpdate {
+  google.protobuf.Timestamp Time = 1;
+  float Longitude = 2;
+  float Latitude = 3;
+}
