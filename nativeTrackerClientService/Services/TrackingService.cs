@@ -1,3 +1,4 @@
+using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 
 namespace nativeTrackerClientService.Services;
@@ -21,13 +22,14 @@ public class TrackingService : VehicleTrackService.VehicleTrackServiceBase
         {
             Random rand = new();
 
-            for (int i = 0; i < rand.Next(10, 20); i++)
+            for (int i = 0; i < rand.Next(4000, 5000); i++)
             {
-                await Task.Delay(rand.Next(500, 5000));
+                await Task.Delay(rand.Next(5, 100));
                 await responseStream.WriteAsync(new VehicleTrackUpdate()
                 {
                     Longitude = (float)rand.NextDouble() * 360 - 180,
                     Latitude = (float)rand.NextDouble() * 170 - 85,
+                    Time = Timestamp.FromDateTime(DateTime.UtcNow)
                 });
             }
         }

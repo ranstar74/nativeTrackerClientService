@@ -1,0 +1,79 @@
+﻿{
+   "CodeGenerationMode": 2,
+   "ContextClassName": "nativeContext",
+   "ContextNamespace": "Entities",
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": true,
+   "ModelNamespace": "Entities",
+   "OutputContextPath": "Entities",
+   "OutputPath": "Entities",
+   "ProjectRootNamespace": "nativeTrackerClientService",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[Client].[ClientUser]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Track].[Feature]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Track].[Installation]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Track].[InstallationAttachment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Track].[Model]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Track].[ModelFeatures]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Track].[Picture]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Track].[StateType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Track].[VehicleState]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Track].[Worker]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Vehicle].[Vehicle]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "DESKTOP-UEKS2LQ.nativeTrack",
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": true,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoConstructor": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": true,
+   "UseSpatial": false
+}

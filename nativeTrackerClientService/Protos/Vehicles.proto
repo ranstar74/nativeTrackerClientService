@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option csharp_namespace = "nativeTrackerClientService";
+
+package Vehicles;
+
+import "google/protobuf/timestamp.proto";
+
+// Service for managing vehicles.
+service VehicleService {
+  rpc GetVehicles(GetVehiclesRequest) returns (stream GetVehiclesResponse);
+}
+
+// Request for getting collection of vehicles.
+message GetVehiclesRequest {
+  
+}
+
+// Vehicle entry.
+message GetVehiclesResponse {
+  int32 VehicleHandle = 1;
+  string Name = 2;
+  bytes Photo = 3;
+}

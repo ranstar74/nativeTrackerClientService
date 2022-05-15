@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option csharp_namespace = "nativeTrackerClientService";
+
+package Clients;
+
+import "google/protobuf/timestamp.proto";
+
+service ClientService {
+  rpc CreateAccount(CreateAccountRequest) returns (CreateAccountResponse);
+  rpc LoginAccount(LoginAccountRequest) returns (LoginAccountResponse);
+}
+
+enum CreateStatus {
+  Created = 0;
+  LoginTaken = 1;
+  PasswordFormatIsNotValid = 2;
+  LoginFormatIsNotValid = 3;
+  LoginMustBeDifferentFromPassword = 4;
+}
+
+message CreateAccountRequest {
+  string Login = 1;
+  string Password = 2;
+}
+
+message CreateAccountResponse {
+  CreateStatus Status = 1;
+}
+
+message LoginAccountRequest {
+  string Login = 1;
+  string Password = 2;
+}
+
+message LoginAccountResponse {
+  bool Authorized = 1;
+  string Token = 2;
+}
