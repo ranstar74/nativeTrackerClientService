@@ -1,6 +1,7 @@
 using Google.Protobuf;
 using Grpc.Core;
 using Microsoft.AspNetCore.Authorization;
+using nativeTrackerClientService.Extensions;
 
 namespace nativeTrackerClientService.Services;
 
@@ -12,13 +13,14 @@ public class VehicleService : nativeTrackerClientService.VehicleService.VehicleS
         IServerStreamWriter<GetVehiclesResponse> responseStream,
         ServerCallContext context)
     {
-        return Task.FromResult(() =>
+        return Task.FromResult(async () =>
         {
-            using Entities.nativeContext db = new();
+            await using Entities.nativeContext db = new();
 
-            foreach (var vehicle in db.Vehicles)
+            var user = await db.ClientUsers.FindAsync(context.GetUserName());
+            foreach (var vehicle in user!.Vehicles)
             {
-                responseStream.WriteAsync(new GetVehiclesResponse()
+                await responseStream.WriteAsync(new GetVehiclesResponse()
                 {
                     VehicleHandle = vehicle.ID,
                     Name = vehicle.Name,

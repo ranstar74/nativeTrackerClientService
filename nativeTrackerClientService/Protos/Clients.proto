@@ -9,6 +9,7 @@ import "google/protobuf/timestamp.proto";
 service ClientService {
   rpc CreateAccount(CreateAccountRequest) returns (CreateAccountResponse);
   rpc LoginAccount(LoginAccountRequest) returns (LoginAccountResponse);
+  rpc ValidateToken(ValidateTokenRequest) returns (ValidateTokenResponse);
 }
 
 enum CreateStatus {
@@ -28,6 +29,10 @@ message CreateAccountResponse {
   CreateStatus Status = 1;
 }
 
+message ValidateTokenRequest {
+  string Token = 1;
+}
+
 message LoginAccountRequest {
   string Login = 1;
   string Password = 2;
@@ -36,4 +41,8 @@ message LoginAccountRequest {
 message LoginAccountResponse {
   bool Authorized = 1;
   string Token = 2;
+}
+
+message ValidateTokenResponse {
+  bool IsValid = 1;
 }

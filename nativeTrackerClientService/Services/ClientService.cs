@@ -48,11 +48,11 @@ public class ClientService : nativeTrackerClientService.ClientService.ClientServ
                 };
                 clientUser.Password = AuthorizationManager.EncryptPasswordWithClient(
                     clientUser, request.Password);
-                
+
                 await db.ClientUsers.AddAsync(clientUser);
                 await db.SaveChangesAsync();
             }
-            
+
             return new CreateAccountResponse()
             {
                 Status = status
@@ -74,6 +74,14 @@ public class ClientService : nativeTrackerClientService.ClientService.ClientServ
                 Authorized = authorized,
                 Token = token
             };
+        });
+    }
+
+    public override Task<ValidateTokenResponse> ValidateToken(ValidateTokenRequest request, ServerCallContext context)
+    {
+        return Task.Run(() => new ValidateTokenResponse()
+        {
+            IsValid = AuthorizationManager.IsTokenValid(request.Token)
         });
     }
 }
