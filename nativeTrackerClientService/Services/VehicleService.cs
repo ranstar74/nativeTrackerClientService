@@ -1,13 +1,14 @@
 using Google.Protobuf;
 using Grpc.Core;
 using Microsoft.AspNetCore.Authorization;
+using nativeTrackerClientService.Entities;
 using nativeTrackerClientService.Extensions;
 
 namespace nativeTrackerClientService.Services;
 
+[Authorize]
 public class VehicleService : nativeTrackerClientService.VehicleService.VehicleServiceBase
 {
-    [Authorize]
     public override Task GetVehicles(
         GetVehiclesRequest request,
         IServerStreamWriter<GetVehiclesResponse> responseStream,
@@ -15,7 +16,7 @@ public class VehicleService : nativeTrackerClientService.VehicleService.VehicleS
     {
         return Task.FromResult(async () =>
         {
-            await using Entities.nativeContext db = new();
+            await using nativeContext db = new();
 
             var user = await db.ClientUsers.FindAsync(context.GetUserName());
             foreach (var vehicle in user!.Vehicles)
@@ -27,6 +28,28 @@ public class VehicleService : nativeTrackerClientService.VehicleService.VehicleS
                     Photo = ByteString.CopyFrom(vehicle.Photo)
                 });
             }
+        });
+    }
+
+    public override async Task<AddVehicleResponse> AddVehicle(
+        AddVehicleRequest request, 
+        ServerCallContext context)
+    {
+        return await Task.Run(async () =>
+        {
+            await using nativeContext db = new();
+
+            var user = await db.ClientUsers.FindAsync(context.GetUserName());
+
+            user!.Vehicles.Add(new Vehicle()
+            {
+                Name = request.Name,
+                Photo = request.Photo.ToByteArray(),
+                ClientLogin = user.Login
+            });
+            await db.SaveChangesAsync();
+
+            return new AddVehicleResponse();
         });
     }
 }
