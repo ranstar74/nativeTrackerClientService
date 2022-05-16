@@ -9,16 +9,17 @@ namespace nativeTrackerClientService.Services;
 [Authorize]
 public class VehicleService : nativeTrackerClientService.VehicleService.VehicleServiceBase
 {
-    public override Task GetVehicles(
+    public override async Task GetVehicles(
         GetVehiclesRequest request,
         IServerStreamWriter<GetVehiclesResponse> responseStream,
         ServerCallContext context)
     {
-        return Task.FromResult(async () =>
+        await Task.Run(async () =>
         {
             await using nativeContext db = new();
 
             var user = await db.ClientUsers.FindAsync(context.GetUserName());
+            
             foreach (var vehicle in user!.Vehicles)
             {
                 await responseStream.WriteAsync(new GetVehiclesResponse()

@@ -61,8 +61,17 @@ namespace nativeTrackerClientService.Credentials
 
         public static bool IsTokenValid(string token)
         {
-            var result = JwtTokenHandler.ValidateToken(token, ValidationParameters, out _);
-            return result.Identity != null;
+            try
+            {
+                var result = JwtTokenHandler.ValidateToken(token, ValidationParameters, out _);
+                return result.Identity != null;
+            }
+            catch (Exception)
+            {
+                
+            }
+
+            return false;
         }
 
         public static string EncryptPasswordWithClient(ClientUser user, string password)
