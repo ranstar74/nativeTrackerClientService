@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\RiderProjects\\nativeTrackerClientService\\nativeTrackerClientService\\nativeTrackerClientService.csproj": {}
+    "C:\\Users\\falco\\RiderProjects\\nativeTrackerClientService\\nativeTrackerClientService\\nativeTrackerClientService.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\RiderProjects\\nativeTrackerClientService\\nativeTrackerClientService\\nativeTrackerClientService.csproj": {
+    "C:\\Users\\falco\\RiderProjects\\nativeTrackerClientService\\nativeTrackerClientService\\nativeTrackerClientService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\RiderProjects\\nativeTrackerClientService\\nativeTrackerClientService\\nativeTrackerClientService.csproj",
+        "projectUniqueName": "C:\\Users\\falco\\RiderProjects\\nativeTrackerClientService\\nativeTrackerClientService\\nativeTrackerClientService.csproj",
         "projectName": "nativeTrackerClientService",
-        "projectPath": "C:\\Users\\User\\RiderProjects\\nativeTrackerClientService\\nativeTrackerClientService\\nativeTrackerClientService.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\RiderProjects\\nativeTrackerClientService\\nativeTrackerClientService\\obj\\",
+        "projectPath": "C:\\Users\\falco\\RiderProjects\\nativeTrackerClientService\\nativeTrackerClientService\\nativeTrackerClientService.csproj",
+        "packagesPath": "C:\\Users\\falco\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\falco\\RiderProjects\\nativeTrackerClientService\\nativeTrackerClientService\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\falco\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -50,6 +48,14 @@
             "Grpc.AspNetCore": {
               "target": "Package",
               "version": "[2.40.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.5, )"
             }
           },
           "imports": [
@@ -70,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
