@@ -1,8 +1,10 @@
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
+using Microsoft.AspNetCore.Authorization;
 
 namespace nativeTrackerClientService.Services;
 
+[Authorize]
 public class TrackingService : VehicleTrackService.VehicleTrackServiceBase
 {
     private readonly ILogger<TrackingService> _logger;

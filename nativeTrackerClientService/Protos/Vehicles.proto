@@ -9,11 +9,12 @@ import "google/protobuf/timestamp.proto";
 // Service for managing vehicles.
 service VehicleService {
   rpc GetVehicles(GetVehiclesRequest) returns (stream GetVehiclesResponse);
+  rpc AddVehicle(AddVehicleRequest) returns (AddVehicleResponse);
 }
 
 // Request for getting collection of vehicles.
 message GetVehiclesRequest {
-  
+
 }
 
 // Vehicle entry.
@@ -21,4 +22,14 @@ message GetVehiclesResponse {
   int32 VehicleHandle = 1;
   string Name = 2;
   bytes Photo = 3;
+}
+
+message AddVehicleRequest {
+  string Name = 1;
+  bytes Photo = 2;
+  string ClientLogin = 3;
+}
+
+message AddVehicleResponse {
+
 }
