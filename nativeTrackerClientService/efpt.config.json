@@ -18,6 +18,14 @@
          "ObjectType": 0
       },
       {
+         "Name": "[Employee].[Employee]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Employee].[Role]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[Track].[Feature]",
          "ObjectType": 0
       },
@@ -27,6 +35,26 @@
       },
       {
          "Name": "[Track].[InstallationAttachment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Track].[InstallationIssue]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Track].[IssuePayment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Track].[IssueStatus]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Track].[IssueType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Track].[Manufacturer]",
          "ObjectType": 0
       },
       {
@@ -50,15 +78,11 @@
          "ObjectType": 0
       },
       {
-         "Name": "[Track].[Worker]",
-         "ObjectType": 0
-      },
-      {
          "Name": "[Vehicle].[Vehicle]",
          "ObjectType": 0
       }
    ],
-   "UiHint": "DESKTOP-UEKS2LQ.nativeTrack",
+   "UiHint": "WIN-ET9L3Q4RFB8\\SQLEXPRESS01.nativeTrack",
    "UseBoolPropertiesWithoutDefaultSql": false,
    "UseDatabaseNames": true,
    "UseDbContextSplitting": false,

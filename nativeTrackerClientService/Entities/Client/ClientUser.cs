@@ -13,6 +13,7 @@ namespace nativeTrackerClientService.Entities
         public string Login { get; set; }
         public string Password { get; set; }
         public DateTime CreateDate { get; set; }
+        public string Phone { get; set; }
 
         public virtual ICollection<Vehicle> Vehicles { get; set; }
     }

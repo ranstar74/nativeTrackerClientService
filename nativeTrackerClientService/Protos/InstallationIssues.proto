@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+option csharp_namespace = "nativeTrackerClientService";
+
+package Clients;
+
+service InstallationIssueService {
+  rpc CreateIssue(CreateIssueRequest) returns (CreateIssueResponse);
+  rpc GetIssues(GetIssuesRequest) returns (GetIssuesResponse);
+  rpc CancelIssue(CancelIssueRequest) returns (CancelIssueResponse);
+  rpc PayIssue(PayIssueRequest) returns (PayIssueResponse);
+}
+
+enum IssueType {
+  Installation = 0;
+  Deinstallation = 1;
+  Repair = 2;
+}
+
+message CreateIssueRequest {
+  IssueType IssueType = 1;
+  // Model of the device. Required if IssueType is Installation.
+  int32 ModelHandle = 2;
+  // IMEI of the device. Required if IssueType is Deinstallation or Repair.
+  string IMEI = 3;
+  // Comments if IssueType is Repair.
+  string Comments = 4;
+}
+
+message CreateIssueResponse {
+  // void
+}
+
+message GetIssuesRequest {
+  // void
+}
+
+message GetIssuesResponse {
+  int32 IssueHandle = 1;
+  IssueType IssueType = 2;
+  // Model of the device if IssueType is Installation.
+  int32 ModelHandle = 3;
+  // IMEI of hte device if IssueType is Deinstallation or Repair.
+  string IMEI = 4;
+}
+
+message CancelIssueRequest {
+  string Reason = 1;
+}
+
+message CancelIssueResponse {
+  // void
+}
+
+message PayIssueRequest {
+  int32 IssueHandle = 1;
+}
+
+message PayIssueResponse {
+  // void
+}

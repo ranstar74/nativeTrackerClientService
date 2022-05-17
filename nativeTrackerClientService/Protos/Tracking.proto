@@ -9,6 +9,17 @@ import "google/protobuf/timestamp.proto";
 // Service for tracking vehicle position.
 service VehicleTrackService {
   rpc Subscribe(VehicleTrackRequest) returns (stream VehicleTrackUpdate);
+  
+  // Gets a collection of all existing device features.
+  rpc GetTrackModelsFeatures(GetTrackModelFeaturesRequest) returns (GetTrackModelFeaturesResponse);
+
+  // Gets a collection of all existing device manufactures.
+  rpc GetTrackModelsManufacturers(GetTrackModelManufacturersRequest) returns (GetTrackModelManufacturersResponse);
+
+  // Gets a stream of all existing devices. 
+  rpc GetTrackModels(GetTrackModelsRequest) returns (stream GetTrackModelResponse);
+  
+  rpc GetTrackModelPriceRange(GetTrackModelPriceRangeRequest) returns (GetTrackModelPriceRangeResponse);
 }
 
 // Tracking request containing vehicle handle.
@@ -21,4 +32,57 @@ message VehicleTrackUpdate {
   google.protobuf.Timestamp Time = 1;
   float Longitude = 2;
   float Latitude = 3;
+}
+
+// Gets tracking device models with specified requirements.
+message GetTrackModelsRequest {
+  // Search query. Keep empty to disable filtering.
+  string Search = 1;
+  // Minimum price.
+  double MinPrice = 2;
+  // Maximum price.
+  double MaxPrice = 3;
+  // Model features. Keep empty to disable filtering.
+  repeated string Features = 4;
+  // Model manufacturer. Keep empty to disable filtering.
+  repeated string Manufacturers = 5;
+  // Page index to display.
+  int32 Page = 6;
+  // Number of elements per page.
+  int32 ElementsOnPage = 7;
+}
+
+message GetTrackModelResponse {
+  string Name = 1;
+  double Price = 2;
+  string Description = 3;
+  string Manufacturer = 4;
+  repeated string Features = 5;
+}
+
+message GetTrackModelFeaturesRequest {
+  
+}
+
+message GetTrackModelFeaturesResponse {
+  // Collection of all existing device features.
+  repeated string Features = 1;
+}
+
+message GetTrackModelManufacturersRequest {
+
+}
+
+message GetTrackModelManufacturersResponse {
+  // Collection of all existing device manufacturers.
+  repeated string Manufacturers = 1;
+}
+
+message GetTrackModelPriceRangeRequest {
+  
+}
+
+message GetTrackModelPriceRangeResponse {
+  double MinPrice = 1;
+  double MaxPrice = 2;
 }

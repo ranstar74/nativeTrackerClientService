@@ -10,6 +10,7 @@ import "google/protobuf/timestamp.proto";
 service VehicleService {
   rpc GetVehicles(GetVehiclesRequest) returns (stream GetVehiclesResponse);
   rpc AddVehicle(AddVehicleRequest) returns (AddVehicleResponse);
+  rpc EditVehicle(EditVehicleRequest) returns (EditVehicleResponse);
 }
 
 // Request for getting collection of vehicles.
@@ -27,9 +28,18 @@ message GetVehiclesResponse {
 message AddVehicleRequest {
   string Name = 1;
   bytes Photo = 2;
-  string ClientLogin = 3;
 }
 
 message AddVehicleResponse {
+  
+}
 
+message EditVehicleRequest {
+  int32 VehicleHandle = 1;
+  string Name = 2;
+  bytes Photo = 3;
+}
+
+message EditVehicleResponse {
+  
 }

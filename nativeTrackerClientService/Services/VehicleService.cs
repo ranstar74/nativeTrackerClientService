@@ -19,7 +19,7 @@ public class VehicleService : nativeTrackerClientService.VehicleService.VehicleS
             await using nativeContext db = new();
 
             var user = await db.ClientUsers.FindAsync(context.GetUserName());
-            
+
             foreach (var vehicle in user!.Vehicles)
             {
                 await responseStream.WriteAsync(new GetVehiclesResponse()
@@ -33,7 +33,7 @@ public class VehicleService : nativeTrackerClientService.VehicleService.VehicleS
     }
 
     public override async Task<AddVehicleResponse> AddVehicle(
-        AddVehicleRequest request, 
+        AddVehicleRequest request,
         ServerCallContext context)
     {
         return await Task.Run(async () =>
@@ -51,6 +51,29 @@ public class VehicleService : nativeTrackerClientService.VehicleService.VehicleS
             await db.SaveChangesAsync();
 
             return new AddVehicleResponse();
+        });
+    }
+
+    public override async Task<EditVehicleResponse> EditVehicle(
+        EditVehicleRequest request,
+        ServerCallContext context)
+    {
+        return await Task.Run(async () =>
+        {
+            await using nativeContext db = new();
+
+            var user = await db.ClientUsers.FindAsync(context.GetUserName());
+            var vehicle = await db.Vehicles.FindAsync(request.VehicleHandle);
+
+            // TODO: Unauthorized exception
+            // if(vehicle.ClientLogin != user.Login)
+
+            vehicle!.Name = request.Name;
+            vehicle!.Photo = request.Photo.ToByteArray();
+
+            await db.SaveChangesAsync();
+
+            return new EditVehicleResponse();
         });
     }
 }
